@@ -1,0 +1,22 @@
+<section id="stack" class="container section" aria-labelledby="stack-titulo">
+  <h2 id="stack-titulo" class="section-title">{{ i18n.ui().sections.skills }}</h2>
+
+  <div class="grid">
+    @for (group of groups; track group.icon) {
+      <article class="card">
+        <header class="card-head">
+          <span class="icon-box"><app-icon [name]="group.icon" /></span>
+          <h3>{{ i18n.t(group.title) }}</h3>
+        </header>
+        <ul>
+          @for (item of group.items; track $index) {
+            <li>
+              <app-icon name="tick" />
+              {{ i18n.t(item) }}
+            </li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+</section>

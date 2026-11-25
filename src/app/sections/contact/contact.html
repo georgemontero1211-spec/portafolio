@@ -1,0 +1,43 @@
+@let ui = i18n.ui();
+
+<section id="contacto" class="container section contact" aria-labelledby="contacto-titulo">
+  <h2 id="contacto-titulo" class="section-title">{{ ui.sections.contact }}</h2>
+  <p class="section-lead">{{ ui.contact.lead }}</p>
+
+  <div class="info">
+    <button type="button" class="email" (click)="copyEmail()" [attr.aria-label]="ui.contact.copyEmail + ' ' + profile.email">
+      <app-icon name="mail" />
+      <span>{{ profile.email }}</span>
+      <span class="copy-state" aria-live="polite">
+        @if (copied()) {
+          <app-icon name="tick" /> {{ ui.contact.copied }}
+        } @else {
+          <app-icon name="copy" />
+        }
+      </span>
+    </button>
+    <span class="location">
+      <app-icon name="map-pin" />
+      {{ ui.contact.location }}
+    </span>
+  </div>
+
+  <div class="actions">
+    <a class="btn-primary" [href]="'mailto:' + profile.email">
+      <app-icon name="mail" />
+      {{ ui.contact.writeMe }}
+    </a>
+    <a class="btn-secondary" [href]="profile.linkedin" target="_blank" rel="noopener">
+      <app-icon name="linkedin" />
+      LinkedIn
+    </a>
+    <a class="btn-secondary" [href]="profile.github" target="_blank" rel="noopener">
+      <app-icon name="github" />
+      GitHub
+    </a>
+    <a class="btn-secondary" [href]="profile.cv" download>
+      <app-icon name="download" />
+      {{ ui.contact.cv }}
+    </a>
+  </div>
+</section>

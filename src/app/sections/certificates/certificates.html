@@ -1,0 +1,46 @@
+@let ui = i18n.ui();
+
+<section id="certificados" class="container section" aria-labelledby="certificados-titulo">
+  <h2 id="certificados-titulo" class="section-title">{{ ui.sections.certificates }}</h2>
+
+  <div class="grid">
+    @for (cert of certificates; track cert.id) {
+      <article class="card">
+        <a class="thumb" [href]="cert.pdf" target="_blank" rel="noopener" [attr.aria-label]="ui.certificates.open + ': ' + cert.title">
+          <img [src]="cert.image" [alt]="ui.certificates.alt + ' ' + cert.title" width="900" height="660" loading="lazy" />
+        </a>
+
+        <div class="body">
+          <span class="issuer mono-label">{{ cert.platform }} · {{ cert.issuer }}</span>
+          <h3>{{ cert.title }}</h3>
+          <p class="meta">
+            <app-icon name="calendar" />
+            {{ i18n.t(cert.date) }}
+          </p>
+          @if (cert.detail) {
+            <p class="detail">{{ i18n.t(cert.detail) }}</p>
+          }
+
+          <div class="links">
+            @if (cert.verifyUrl) {
+              <a [href]="cert.verifyUrl" target="_blank" rel="noopener">
+                <app-icon name="check" />
+                {{ ui.certificates.verify }}
+              </a>
+            }
+            <a [href]="cert.pdf" target="_blank" rel="noopener">
+              <app-icon name="external" />
+              {{ ui.certificates.viewPdf }}
+            </a>
+            @if (cert.relatedRepo) {
+              <a [href]="cert.relatedRepo" target="_blank" rel="noopener">
+                <app-icon name="code" />
+                {{ ui.certificates.finalProject }}
+              </a>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

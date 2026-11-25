@@ -1,0 +1,24 @@
+@let ui = i18n.ui();
+@let dark = theme.theme() === 'dark';
+
+<header class="container navbar">
+  <a class="brand" href="#inicio">
+    <span class="status-dot" aria-hidden="true"></span>
+    {{ profile.shortName }}
+  </a>
+
+  <div class="actions">
+    <button type="button" class="icon-btn lang" (click)="i18n.toggle()" [attr.aria-label]="ui.nav.switchLang">
+      {{ ui.nav.langLabel }}
+    </button>
+    <button
+      type="button"
+      class="icon-btn"
+      (click)="theme.toggle()"
+      [attr.aria-label]="dark ? ui.nav.toLight : ui.nav.toDark"
+      [attr.aria-pressed]="dark"
+    >
+      <app-icon [name]="dark ? 'sun' : 'moon'" />
+    </button>
+  </div>
+</header>

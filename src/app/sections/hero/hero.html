@@ -1,0 +1,36 @@
+@let ui = i18n.ui();
+
+<section id="inicio" class="container hero">
+  <div class="intro">
+    <span class="tag">{{ profile.tag }}</span>
+    <h1>{{ profile.name }}</h1>
+    <p class="role">{{ i18n.t(profile.role) }}</p>
+    <p class="summary">{{ i18n.t(profile.summary) }}</p>
+
+    <div class="cta">
+      <a class="btn-primary" [href]="profile.cv" download>
+        <app-icon name="download" />
+        {{ ui.hero.downloadCv }}
+      </a>
+      <a class="social" [href]="profile.github" target="_blank" rel="noopener" aria-label="GitHub">
+        <app-icon name="github" />
+      </a>
+      <a class="social" [href]="profile.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <app-icon name="linkedin" />
+      </a>
+      <a class="social" [href]="'mailto:' + profile.email" [attr.aria-label]="ui.hero.sendEmail">
+        <app-icon name="mail" />
+      </a>
+    </div>
+  </div>
+
+  <div class="avatar-wrap">
+    <div class="avatar">
+      <img [src]="profile.photo" [alt]="ui.hero.photoAlt" width="400" height="400" fetchpriority="high" />
+    </div>
+    <p class="location">
+      <app-icon name="map-pin" />
+      {{ i18n.t(profile.location) }}
+    </p>
+  </div>
+</section>

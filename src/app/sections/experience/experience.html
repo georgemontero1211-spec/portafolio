@@ -1,0 +1,22 @@
+<section id="experiencia" class="container section" aria-labelledby="experiencia-titulo">
+  <h2 id="experiencia-titulo" class="section-title">{{ i18n.ui().sections.experience }}</h2>
+
+  <div class="grid">
+    @for (item of items; track item.organization) {
+      <article class="card" [class.card--education]="item.kind === 'education'">
+        <span class="org mono-label">{{ item.organization }}</span>
+        <h3>{{ i18n.t(item.role) }}</h3>
+        <p class="period">
+          <app-icon name="calendar" />
+          {{ i18n.t(item.period) }}
+        </p>
+        <p class="description">{{ i18n.t(item.description) }}</p>
+        <p class="tags mono-label">
+          @for (tag of item.tags; track $index) {
+            {{ i18n.t(tag) }}{{ $last ? '' : ' · ' }}
+          }
+        </p>
+      </article>
+    }
+  </div>
+</section>

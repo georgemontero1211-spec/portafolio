@@ -1,0 +1,50 @@
+@let ui = i18n.ui();
+
+<section id="proyectos" class="container section" aria-labelledby="proyectos-titulo">
+  <h2 id="proyectos-titulo" class="section-title">{{ ui.sections.projects }}</h2>
+
+  <div class="grid">
+    @for (project of projects; track project.id) {
+      <article class="card" [class.card--featured]="project.featured">
+        <!-- Captura dentro de un marco de navegador -->
+        <div class="frame">
+          <div class="frame-bar" aria-hidden="true">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="url">{{ i18n.t(project.frameUrl) }}</span>
+            @if (project.badgeTone === 'live') {
+              <span class="live mono-label">{{ ui.projects.live }}</span>
+            }
+          </div>
+          <div class="shot">
+            <img [src]="project.image" [alt]="i18n.t(project.imageAlt)" width="1600" height="1000" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="body">
+          <span class="badge mono-label" [class.badge--live]="project.badgeTone === 'live'">{{ i18n.t(project.badge) }}</span>
+          <h3>{{ i18n.t(project.title) }}</h3>
+          <p class="description">{{ i18n.t(project.description) }}</p>
+
+          <ul class="highlights" [attr.aria-label]="ui.projects.highlights">
+            @for (h of project.highlights; track $index) {
+              <li class="chip">{{ i18n.t(h) }}</li>
+            }
+          </ul>
+
+          <p class="stack mono-label">{{ project.stack.join(' · ') }}</p>
+
+          <div class="links">
+            @for (link of project.links; track link.url) {
+              <a [href]="link.url" target="_blank" rel="noopener">
+                <app-icon [name]="link.kind === 'repo' ? 'code' : 'external'" />
+                {{ i18n.t(link.label) }}
+              </a>
+            } @empty {
+              <span class="soon">{{ ui.projects.codeSoon }}</span>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
