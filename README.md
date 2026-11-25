@@ -2,6 +2,8 @@
 
 Portafolio personal de desarrollador de software, construido desde cero con **Angular**. Presenta mi experiencia, mis proyectos destacados, certificaciones y stack técnico, con **modo oscuro** y versión en **español e inglés**.
 
+🔗 **Sitio en vivo:** [georgedev-bice.vercel.app](https://georgedev-bice.vercel.app/)
+
 ## Secciones
 
 - **Presentación**: perfil, resumen y descarga del CV.
@@ -50,7 +52,7 @@ npm start          # http://localhost:4200
 
 ## Despliegue
 
-Es un sitio estático. En **Vercel** se detecta como proyecto Angular automáticamente; el directorio de salida es `dist/portafolio/browser`.
+Es un sitio estático desplegado en **Vercel** ([georgedev-bice.vercel.app](https://georgedev-bice.vercel.app/)), que lo detecta como proyecto Angular automáticamente; el directorio de salida es `dist/portafolio/browser`. Cada push a `main` publica una nueva versión.
 
 ## Contacto
 
